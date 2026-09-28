@@ -14,3 +14,13 @@ export function toBars(months: YearMonth[], volumes: Pick<MonthlyVolume, "month"
 export function barsTotal(bars: MonthBar[]): number {
   return bars.reduce((sum, bar) => sum + bar.domestic + bar.imported, 0);
 }
+
+/** 12개월 동안 수입 물량이 국산보다 많은 품종. "수입" 칩과 수입 색을 붙인다 */
+export function importedVarietyIds(volumes: MonthlyVolume[]): Set<number> {
+  const balance = new Map<number, number>();
+  for (const volume of volumes) {
+    const sign = volume.origin === "IMPORT" ? 1 : -1;
+    balance.set(volume.varietyId, (balance.get(volume.varietyId) ?? 0) + sign * volume.qty);
+  }
+  return new Set([...balance].filter(([, qty]) => qty > 0).map(([id]) => id));
+}

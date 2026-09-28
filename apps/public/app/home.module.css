@@ -1,0 +1,296 @@
+.hero {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calendarLink {
+  flex: none;
+  padding: 10px 16px;
+  font-size: 15px;
+  text-decoration: none;
+  background: var(--surface);
+  border-radius: var(--radius-pill);
+}
+
+/* 과일 찾기 */
+.finder {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  padding: 18px 26px;
+  background: var(--surface);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-card);
+}
+
+.finderTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.finderHint {
+  margin: 0 0 0 auto;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* 평소보다 많이 나오는 과일 */
+.aboveUsual {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aboveUsualTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  min-width: 0;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.card:hover {
+  color: var(--ink);
+  box-shadow:
+    0 0 0 2px var(--hero),
+    var(--shadow-card);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.recent {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.cardName {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--ink-strong);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardPrice {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-variant-numeric: tabular-nums;
+}
+
+.cardPrice small {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* 마지막 거래일이 기준일이 아닐 때 붙는 날짜 */
+.date {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--faint);
+}
+
+/* 품종별 도매가 */
+.priceHead,
+.priceRow {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+
+.priceHead {
+  padding: 0 18px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.priceHead span:not(:first-child) {
+  text-align: right;
+}
+
+.prices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.priceRow {
+  padding: 12px 18px;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--surface-soft);
+  border-radius: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.priceRow:hover {
+  color: var(--ink);
+  background: var(--surface-muted);
+}
+
+.priceName {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.priceName b {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.priceName small {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.today {
+  text-align: right;
+  font-size: 16px;
+}
+
+.week {
+  text-align: right;
+  font-size: 15px;
+  color: var(--ink-2);
+}
+
+/* 넓은 화면은 열 제목이 있으니 줄 안의 "이번 주 평균" 글자는 숨긴다 */
+.week small {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .hero {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .calendarLink {
+    align-self: flex-start;
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  .finder {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 20px 18px;
+    border-radius: 22px;
+  }
+
+  .finderTitle {
+    font-size: 20px;
+  }
+
+  .finderHint {
+    margin: 0;
+    font-size: 13px;
+  }
+
+  .aboveUsualTitle {
+    font-size: 24px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .card {
+    padding: 14px;
+    gap: 6px;
+    border-radius: 18px;
+  }
+
+  .recent {
+    font-size: 12px;
+  }
+
+  .cardName {
+    font-size: 19px;
+  }
+
+  .cardPrice {
+    font-size: 20px;
+  }
+
+  .cardPrice small {
+    font-size: 12px;
+  }
+
+  /* 이름·오늘 도매가 한 줄, 이번 주 평균 아래 작게 */
+  .weekHead {
+    display: none;
+  }
+
+  .priceHead,
+  .priceRow {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .priceHead {
+    padding: 0 14px;
+    font-size: 12px;
+  }
+
+  .priceRow {
+    gap: 4px 12px;
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+
+  .week {
+    grid-column: 1 / -1;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .week small {
+    display: inline;
+    font-size: inherit;
+  }
+}

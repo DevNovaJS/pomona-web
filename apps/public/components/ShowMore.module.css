@@ -1,0 +1,18 @@
+.item {
+  display: contents;
+}
+
+.folded {
+  display: none;
+}
+
+.more {
+  height: 44px;
+  font: inherit;
+  font-size: 15px;
+  color: var(--link);
+  background: var(--control);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}

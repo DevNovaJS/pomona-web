@@ -1,27 +1,18 @@
 import Link from "next/link";
 import { api } from "@/lib/api";
-import { itemCode, varietyCode, varietyName } from "@/lib/paths";
+import { selectOptions } from "@/lib/select";
 import { FruitSelect } from "./FruitSelect";
 import styles from "./SiteHeader.module.css";
 
 /**
- * 품목·품종 페이지의 머리. 셀렉트박스를 둔다(제철 캘린더·리뷰 페이지는 셀렉트 없이 쓴다).
+ * 공개 페이지의 머리. 품목·품종 페이지는 [current] 를 넘겨 셀렉트박스를 둔다(메인은 본문에, 캘린더·리뷰는 없음).
  * 넓은 화면은 한 줄, 좁은 화면은 로고 줄 아래에 셀렉트를 한 줄 더 둔다.
  */
 export async function SiteHeader({ current }: { current?: { itemCode: string; varietyCode?: string } }) {
   const [items, varieties, period] = await Promise.all([api.items(), api.varieties(), api.period()]);
   const selects = current && (
     <div className={styles.selects}>
-      <FruitSelect
-        items={items.map((item) => ({ code: itemCode(item), name: item.mclsfNm }))}
-        varieties={varieties.map((variety) => ({
-          code: varietyCode(variety),
-          name: varietyName(variety),
-          itemCode: itemCode(variety),
-        }))}
-        itemCode={current.itemCode}
-        varietyCode={current.varietyCode}
-      />
+      <FruitSelect {...selectOptions(items, varieties)} itemCode={current.itemCode} varietyCode={current.varietyCode} />
     </div>
   );
 
@@ -36,7 +27,7 @@ export async function SiteHeader({ current }: { current?: { itemCode: string; va
       </Link>
       {selects}
       <nav className={styles.nav}>
-        <Link href={`/calendar/${period.to.slice(5)}`}>제철 캘린더</Link>
+        <Link href={`/calendar/${period.to.slice(5)}`}>과일 캘린더</Link>
         <Link href="/reviews">리뷰</Link>
       </nav>
     </header>

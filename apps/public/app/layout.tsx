@@ -8,7 +8,7 @@ const nanum = Nanum_Gothic({ weight: ["400", "700"], subsets: ["latin"], variabl
 
 export const metadata: Metadata = {
   title: "pomona",
-  description: "가락시장 도매가와 출하 물량으로 보는 제철 과일",
+  description: "가락시장 도매가와 출하 물량으로 보는 과일 시세",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

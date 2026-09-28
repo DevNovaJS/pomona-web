@@ -84,6 +84,17 @@ export interface MonthlyVolume {
   qty: number;
 }
 
+/** GET /volumes/recent — 품종별 최근 14일 물량과 평소 14일 물량(12개월 × 14 ÷ 365), 그 배수. 최근 14일에 거래한 품종만 온다 */
+export interface RecentVolume {
+  varietyId: number;
+  /** kg */
+  recentQty: number;
+  /** kg */
+  usualQty: number;
+  /** recentQty ÷ usualQty, 소수 1자리 */
+  ratio: number;
+}
+
 /** GET /volumes/items — 품목·달·국산/수입별 물량(kg). 품목 안의 기타·소량 품종까지 전부 합친다 */
 export interface ItemMonthlyVolume {
   lclsfCd: string;
