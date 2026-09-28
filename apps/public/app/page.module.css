@@ -1,0 +1,19 @@
+.main {
+  padding: 32px 16px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 40px;
+  color: var(--ink-strong);
+}
+
+.domestic {
+  color: var(--domestic);
+}
+
+.import {
+  color: var(--import);
+}

@@ -1,0 +1,12 @@
+.stars {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.on {
+  fill: var(--star);
+}
+
+.off {
+  fill: #e3e6dc;
+}

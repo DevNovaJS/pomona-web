@@ -1,0 +1,20 @@
+# 워크스페이스 전체. 앱마다의 Next.js 항목은 apps/*/.gitignore
+
+# dependencies
+node_modules/
+
+# typescript (packages/shared 의 tsc 결과)
+*.tsbuildinfo
+
+# misc
+.DS_Store
+.pnpm-debug.log*
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### VS Code ###
+.vscode/

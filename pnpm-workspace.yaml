@@ -1,0 +1,8 @@
+packages:
+  - apps/*
+  - packages/*
+
+# 설치 스크립트를 돌릴 패키지. 정적 내보내기라 이미지 최적화(sharp)를 쓰지 않는다
+allowBuilds:
+  sharp: false
+  unrs-resolver: false

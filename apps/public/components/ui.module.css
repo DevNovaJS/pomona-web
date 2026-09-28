@@ -1,0 +1,98 @@
+/* 페이지마다 같이 쓰는 카드·제목·칩 */
+
+.card {
+  box-sizing: border-box;
+  min-width: 0;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--surface);
+  border-radius: 28px;
+  box-shadow: var(--shadow-card);
+}
+
+.h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+/* 제목 옆 작은 설명 */
+.sub {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.muted {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.chip {
+  padding: 3px 10px;
+  font-size: 13px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.chipImport {
+  composes: chip;
+  color: var(--import-chip-ink);
+  background: var(--import-chip-bg);
+}
+
+.chipFruit {
+  composes: chip;
+  color: var(--link);
+  background: var(--hero);
+}
+
+.legend {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend i {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-pill);
+}
+
+@media (max-width: 720px) {
+  .card {
+    padding: 20px 18px;
+    gap: 14px;
+    border-radius: 22px;
+  }
+
+  .h2 {
+    font-size: 20px;
+  }
+
+  .sub {
+    font-size: 13px;
+  }
+
+  .legend {
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  .legend i {
+    width: 10px;
+    height: 10px;
+  }
+}

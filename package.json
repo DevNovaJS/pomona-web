@@ -1,0 +1,16 @@
+{
+  "name": "pomona-web",
+  "private": true,
+  "scripts": {
+    "dev:public": "pnpm --filter public dev",
+    "dev:admin": "pnpm --filter admin dev",
+    "build:public": "pnpm --filter public build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "biome check",
+    "format": "biome format --write"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.2"
+  },
+  "packageManager": "pnpm@12.6.0"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@pomona/public",
+  "private": true,
+  "scripts": {
+    "data": "node --env-file-if-exists=.env scripts/fetch-data.mjs",
+    "dev": "pnpm data && next dev -H 127.0.0.1 -p 3000",
+    "build": "pnpm data && next build",
+    "typecheck": "next typegen && tsc --noEmit"
+  },
+  "dependencies": {
+    "@pomona/shared": "workspace:*",
+    "next": "16.3.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}

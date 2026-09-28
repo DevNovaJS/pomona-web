@@ -1,0 +1,147 @@
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 16px;
+  flex-wrap: wrap;
+}
+
+.readout {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--surface-muted);
+  border-radius: 12px;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.readoutLabel {
+  color: var(--ink-3);
+}
+
+.split {
+  color: var(--ink-3);
+}
+
+.hint {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.pairWideFirst {
+  composes: pair;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+}
+
+.reset {
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--link);
+  background: var(--control);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+/* 넓은 화면: 산지 이름 칸을 가장 긴 이름에 맞추려고 목록 전체를 한 격자로 두고, 줄(.origin)은 칸만 나눈다 */
+.origins {
+  display: grid;
+  grid-template-columns: max-content minmax(80px, 1fr) auto;
+  gap: 14px 12px;
+  align-items: center;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.origin {
+  display: contents;
+}
+
+.rest {
+  grid-column: 1 / -1;
+}
+
+.originValue {
+  text-align: right;
+  color: var(--ink-2);
+}
+
+.track {
+  height: 12px;
+  background: var(--track);
+  border-radius: var(--radius-pill);
+}
+
+.barDomestic,
+.barImport {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+}
+
+.barDomestic {
+  background: var(--domestic);
+}
+
+.barImport {
+  background: var(--import);
+}
+
+@media (max-width: 720px) {
+  .readout {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  /* 모바일은 한 줄에 합계만. 국산·수입 나눔은 뺀다 */
+  .split {
+    display: none;
+  }
+
+  .pair,
+  .pairWideFirst {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  /* 이름·비중 한 줄, 막대 한 줄 */
+  .origins {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .origin {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "name value"
+      "bar bar";
+    gap: 6px 12px;
+    align-items: center;
+  }
+
+  .originName {
+    grid-area: name;
+  }
+
+  .originValue {
+    grid-area: value;
+  }
+
+  .track {
+    grid-area: bar;
+    height: 8px;
+  }
+}

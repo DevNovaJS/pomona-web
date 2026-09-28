@@ -1,0 +1,46 @@
+/*
+ * 화면 초안(pomona 화면 초안 캔버스)에서 쓴 색·글꼴·모서리. 두 앱이 layout 에서 한 번 불러온다.
+ * 글꼴 파일은 각 앱이 next/font 로 받아 --font-jua · --font-nanum 에 넣는다.
+ */
+:root {
+  --font-display: var(--font-jua), sans-serif;
+  --font-body: var(--font-nanum), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+
+  /* 바탕 */
+  --bg: #f6f7ee;
+  --surface: #ffffff;
+  --surface-soft: #f7f9f1;
+  --surface-muted: #f5f7ef;
+  --hero: #e9f3de;
+  --track: #eef2e8;
+
+  /* 글자 */
+  --ink-strong: #25301f;
+  --ink: #2b3328;
+  --ink-2: #3e4a3a;
+  --ink-3: #56614f;
+  --muted: #6f786a;
+  --faint: #8a9384;
+
+  /* 강조 */
+  --brand: #5e9a5a;
+  --link: #3f7a3c;
+  --link-hover: #2c5a2a;
+  --control: #f1f4e9;
+  --star: #e2a23b;
+
+  /* 국산·수입 — 물량 막대·산지 막대·칩 */
+  --domestic: #2a78d6;
+  --domestic-light: #b9d3f3;
+  --domestic-chip-ink: #1d5aa6;
+  --domestic-chip-bg: #e3eefc;
+  --import: #eb6834;
+  --import-light: #f6c6ab;
+  --import-chip-ink: #a8481a;
+  --import-chip-bg: #fdebe0;
+
+  --radius-pill: 999px;
+  --radius-card: 24px;
+  --radius-row: 14px;
+  --shadow-card: 0 1px 2px rgba(60, 80, 40, 0.06), 0 10px 30px rgba(60, 80, 40, 0.06);
+}

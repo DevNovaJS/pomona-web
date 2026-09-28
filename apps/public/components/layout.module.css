@@ -1,0 +1,77 @@
+/* 공개 페이지 본문 틀과 맨 위 제목 칸 */
+
+.main {
+  max-width: 1280px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 16px 72px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.hero {
+  padding: 32px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--hero);
+  border-radius: 32px;
+}
+
+.crumb {
+  align-self: flex-start;
+  padding: 6px 14px;
+  font-size: 14px;
+  background: var(--surface);
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+}
+
+.name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 56px;
+  line-height: 1.15;
+  font-weight: 400;
+  color: var(--ink-strong);
+  text-wrap: balance;
+}
+
+.basis {
+  margin: 0;
+  font-size: 16px;
+  color: var(--ink-3);
+}
+
+@media (max-width: 1024px) {
+  .main {
+    padding: 16px 32px 48px;
+  }
+}
+
+@media (max-width: 720px) {
+  .main {
+    padding: 14px 16px 28px;
+    gap: 16px;
+  }
+
+  .hero {
+    padding: 22px 20px;
+    gap: 8px;
+    border-radius: 24px;
+  }
+
+  .crumb {
+    padding: 5px 12px;
+    font-size: 13px;
+  }
+
+  .name {
+    font-size: 36px;
+  }
+
+  .basis {
+    font-size: 14px;
+  }
+}

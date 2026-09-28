@@ -1,0 +1,190 @@
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.priceHead {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  align-items: stretch;
+  background: var(--surface-soft);
+  border-radius: var(--radius-row);
+}
+
+.row:hover {
+  background: var(--surface-muted);
+}
+
+.selected,
+.selected:hover {
+  background: var(--hero);
+  box-shadow: inset 0 0 0 2px var(--brand);
+}
+
+/* "더 보기" 전에는 숨긴다. 검색엔진이 품종 페이지 링크를 찾도록 HTML 에는 넣어 둔다 */
+.folded {
+  display: none;
+}
+
+/* 누르면 막대가 이 품종으로 바뀐다 */
+.pick {
+  flex-grow: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(9em, 1.1fr) minmax(0, 1.4fr) 8.5em;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 6px 12px 14px;
+  font: inherit;
+  color: var(--ink);
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: var(--radius-row);
+  cursor: pointer;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 17px;
+}
+
+.volume {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.track {
+  flex-grow: 1;
+  height: 10px;
+  background: var(--track);
+  border-radius: var(--radius-pill);
+}
+
+.barDomestic,
+.barImport {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+}
+
+.barDomestic {
+  background: var(--domestic);
+}
+
+.barImport {
+  background: var(--import);
+}
+
+.qty {
+  width: 8.5em;
+  text-align: right;
+  font-size: 14px;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.price {
+  text-align: right;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.date {
+  font-size: 12px;
+  color: var(--faint);
+}
+
+/* 품종 페이지로 */
+.go {
+  flex: none;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-row);
+}
+
+.go svg {
+  fill: none;
+  stroke: var(--link);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.go:hover {
+  background: var(--control);
+}
+
+.more {
+  height: 44px;
+  font: inherit;
+  font-size: 15px;
+  color: var(--link);
+  background: var(--control);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .priceHead {
+    font-size: 12px;
+  }
+
+  /* 이름·가격 한 줄, 물량 막대 한 줄 */
+  .pick {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "name price"
+      "volume volume";
+    gap: 8px 10px;
+    padding: 12px 4px 12px 14px;
+  }
+
+  .name {
+    grid-area: name;
+  }
+
+  .price {
+    grid-area: price;
+  }
+
+  .volume {
+    grid-area: volume;
+  }
+
+  .track {
+    height: 8px;
+  }
+
+  .qty {
+    width: auto;
+    font-size: 13px;
+    color: var(--ink-3);
+  }
+
+  .go {
+    width: 36px;
+  }
+}

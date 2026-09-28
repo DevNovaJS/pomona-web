@@ -1,0 +1,187 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.when {
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.icon {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+}
+
+.icon svg {
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.green {
+  background: #e6f4ee;
+}
+
+.green svg {
+  stroke: #2f7a5b;
+}
+
+.purple {
+  background: #f6f5fc;
+}
+
+.icon.purple {
+  background: #f0eefb;
+}
+
+.purple svg {
+  stroke: #5b4f9a;
+}
+
+.orange {
+  background: #fdf6ee;
+}
+
+.icon.orange {
+  background: #fff0e3;
+}
+
+.orange svg {
+  stroke: #9a5a24;
+}
+
+.big {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.bigValue {
+  font-family: var(--font-display);
+  font-size: 46px;
+  color: var(--ink-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+.bigMuted {
+  composes: bigValue;
+  color: #b3bbad;
+}
+
+.unit {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.grades summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 44px;
+  padding: 0 16px;
+  font-size: 15px;
+  color: var(--ink-2);
+  background: var(--surface-muted);
+  border-radius: 16px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.grades summary::-webkit-details-marker {
+  display: none;
+}
+
+.grades summary::after {
+  content: "▾";
+}
+
+.grades[open] summary::after {
+  content: "▴";
+}
+
+.grades dl,
+.rows {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.grades dl {
+  margin-top: 8px;
+  background: var(--surface-muted);
+}
+
+.grades dl div,
+.rows div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.grades dd,
+.rows dd {
+  margin: 0;
+}
+
+.none {
+  color: var(--muted);
+}
+
+.note {
+  margin: 0;
+  font-size: 13px;
+  color: #8a7a6a;
+}
+
+@media (max-width: 720px) {
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .when {
+    font-size: 13px;
+  }
+
+  .icon {
+    display: none;
+  }
+
+  .bigValue {
+    font-size: 40px;
+  }
+
+  .rows,
+  .grades dl {
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+}

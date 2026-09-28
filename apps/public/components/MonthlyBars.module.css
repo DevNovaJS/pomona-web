@@ -1,0 +1,95 @@
+.box {
+  width: 100%;
+  overflow: hidden;
+}
+
+.box svg {
+  display: block;
+}
+
+.grid {
+  stroke: var(--track);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 6;
+  stroke-linecap: round;
+}
+
+.axis {
+  stroke: #dfe4d7;
+  stroke-width: 1.5;
+}
+
+.tick {
+  font-size: 12px;
+  fill: var(--faint);
+  text-anchor: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.domestic {
+  fill: var(--domestic);
+}
+
+.imported {
+  fill: var(--import);
+}
+
+.empty {
+  fill: #d9ded3;
+}
+
+.value {
+  font-size: 13px;
+  fill: var(--ink);
+  text-anchor: middle;
+  font-variant-numeric: tabular-nums;
+}
+
+.month {
+  font-size: 13px;
+  fill: var(--ink-3);
+  text-anchor: middle;
+}
+
+.monthCurrent {
+  composes: month;
+  fill: var(--ink-strong);
+  font-weight: 700;
+}
+
+.year {
+  font-size: 12px;
+  fill: var(--faint);
+  text-anchor: middle;
+}
+
+.partial {
+  font-size: 12px;
+  fill: #a0632a;
+}
+
+.dimmed {
+  opacity: 0.35;
+}
+
+.hit {
+  fill: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.hit:focus-visible {
+  stroke: var(--brand);
+  stroke-width: 2;
+}
+
+/* 좁은 칸(폭을 재서 정한다) */
+.narrow .tick,
+.narrow .year,
+.narrow .partial {
+  font-size: 10px;
+}
+
+.narrow .month {
+  font-size: 11px;
+}
