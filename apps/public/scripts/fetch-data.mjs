@@ -18,6 +18,7 @@ const ENDPOINTS = {
   "retail-prices": "/retail-prices",
   volumes: "/volumes",
   "item-volumes": "/volumes/items",
+  "item-daily-volumes": "/volumes/items/daily",
   "recent-volumes": "/volumes/recent",
   "trading-days": "/trading-days",
   origins: "/origins",

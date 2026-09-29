@@ -1,0 +1,234 @@
+.back {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  text-decoration: none;
+  color: var(--ink-2);
+}
+
+.back svg,
+.link svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.fruit {
+  align-self: flex-start;
+  padding: 6px 14px;
+  font-size: 15px;
+  color: var(--link);
+  background: var(--surface);
+  border-radius: var(--radius-pill);
+}
+
+.meta {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 16px;
+  color: var(--ink-3);
+}
+
+/* 본문 | 산 정보·그날 도매 시세 */
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 20px;
+  align-items: start;
+}
+
+.body {
+  padding: 32px 36px;
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--ink);
+}
+
+.body p {
+  margin: 0;
+  max-width: 40em;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cardHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.when {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.rows {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.rows div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rows dt {
+  color: var(--muted);
+}
+
+.rows dd {
+  margin: 0;
+  text-align: right;
+}
+
+.grades {
+  padding: 14px 16px;
+  background: var(--surface-muted);
+  border-radius: 16px;
+}
+
+.perKg {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 14px 16px;
+  font-size: 14px;
+  color: var(--muted);
+  background: #fdf6ee;
+  border-radius: 16px;
+}
+
+.perKg b,
+.big b {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--ink-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+.perKg b {
+  font-size: 30px;
+}
+
+.big {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.big b {
+  font-size: 40px;
+}
+
+/* 맨 아래 품종·품목 페이지 연결 */
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 24px 32px;
+  color: var(--ink-strong);
+  text-decoration: none;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.link:hover {
+  color: var(--ink-strong);
+  box-shadow:
+    0 0 0 2px var(--hero),
+    var(--shadow-card);
+}
+
+.link span {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.link b {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.link small {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.link svg {
+  flex: none;
+  color: var(--link);
+}
+
+@media (max-width: 720px) {
+  .fruit {
+    padding: 5px 12px;
+    font-size: 14px;
+  }
+
+  .meta {
+    font-size: 14px;
+  }
+
+  .columns {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .body {
+    padding: 20px 18px;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .aside {
+    gap: 16px;
+  }
+
+  .perKg b {
+    font-size: 26px;
+  }
+
+  .big b {
+    font-size: 34px;
+  }
+
+  .link {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .link b {
+    font-size: 18px;
+  }
+
+  .link small {
+    font-size: 13px;
+  }
+}

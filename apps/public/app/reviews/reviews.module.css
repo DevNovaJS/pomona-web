@@ -1,0 +1,188 @@
+/* 검색 */
+.search {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.searchBox {
+  flex-grow: 1;
+  height: 56px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 22px;
+  background: var(--surface);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-card);
+}
+
+.searchBox svg {
+  flex: none;
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.searchBox input {
+  flex-grow: 1;
+  min-width: 0;
+  height: 40px;
+  font: inherit;
+  font-size: 17px;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.count {
+  font-size: 15px;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.empty {
+  margin: 0;
+  padding: 48px 24px;
+  text-align: center;
+  font-size: 16px;
+  color: var(--ink-3);
+  background: var(--surface-soft);
+  border-radius: var(--radius-card);
+}
+
+/* 카드 */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.card {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card:hover {
+  color: inherit;
+  box-shadow:
+    0 0 0 2px var(--hero),
+    var(--shadow-card);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.date {
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--ink-strong);
+}
+
+/* 본문은 두 줄까지만 */
+.body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-2);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--surface-muted);
+  border-radius: 16px;
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.fact small {
+  margin-bottom: 2px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+@media (max-width: 720px) {
+  .search {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .searchBox {
+    height: 50px;
+    padding: 0 18px;
+  }
+
+  .searchBox input {
+    font-size: 16px;
+  }
+
+  .count {
+    padding-left: 6px;
+    font-size: 13px;
+  }
+
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .date {
+    font-size: 13px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .body {
+    font-size: 14px;
+  }
+
+  /* 산 정보 4칸 → 2×2 */
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 12px;
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+
+  .fact {
+    font-size: 14px;
+  }
+
+  .fact small {
+    font-size: 12px;
+  }
+}

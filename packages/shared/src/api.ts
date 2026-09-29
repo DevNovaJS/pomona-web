@@ -104,6 +104,14 @@ export interface ItemMonthlyVolume {
   qty: number;
 }
 
+/** GET /volumes/items/daily — 품목·날짜별 물량(kg). 국산·수입 합계, 거래가 없는 날은 오지 않는다. 과일 캘린더용 */
+export interface ItemDailyVolume {
+  lclsfCd: string;
+  mclsfCd: string;
+  date: IsoDate;
+  qty: number;
+}
+
 /** GET /trading-days — 달마다 가락시장 거래일 수 */
 export type TradingDays = Record<YearMonth, number>;
 
@@ -136,11 +144,15 @@ export interface MarketPrice {
   grades: GradePrice[];
 }
 
-/** GET /reviews — 먹은 날 최신순. 품종을 연결하지 않았으면 varietyId·itemName·varietyName·marketPrice 가 null */
+/** GET /reviews — 먹은 날 최신순. 품종을 연결하지 않았으면 품종 쪽 값(varietyId·lclsfCd·mclsfCd·itemName·varietyName)과 marketPrice 가 null */
 export interface Review {
   id: number;
   fruitName: string;
   varietyId: number | null;
+  /** 연결한 품종의 대분류 코드. 페이지 없는 품종이면 품목 페이지로 보낼 때 쓴다 */
+  lclsfCd: string | null;
+  /** 연결한 품종의 중분류(품목) 코드 */
+  mclsfCd: string | null;
   itemName: string | null;
   varietyName: string | null;
   eatenDate: IsoDate;

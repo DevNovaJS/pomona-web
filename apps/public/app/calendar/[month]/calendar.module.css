@@ -1,0 +1,372 @@
+/* 달 탭 1월~12월. 탭마다 그 달 페이지로 가는 링크 */
+.tabs {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tab,
+.tabCurrent {
+  min-width: 52px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+}
+
+.tab {
+  color: var(--ink-2);
+  background: var(--surface);
+}
+
+.tab:hover {
+  color: var(--ink-2);
+  background: var(--control);
+}
+
+.tabCurrent,
+.tabCurrent:hover {
+  color: #ffffff;
+  background: var(--brand);
+}
+
+/* 범례 */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.legendScale {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.legend i {
+  width: 18px;
+  height: 14px;
+  border-radius: 4px;
+}
+
+.legendNote {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.sectionTitle {
+  margin: 8px 0 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+/* 위쪽 1~10위: 품목마다 크게. 순위 · 이름 · 날짜 띠 */
+.topHead,
+.topRow {
+  display: grid;
+  grid-template-columns: 2rem 7rem minmax(0, 1fr);
+  gap: 0 12px;
+  align-items: center;
+}
+
+.topHead .strip {
+  grid-column: 3;
+}
+
+.topList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rank {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--link);
+  background: var(--hero);
+  border-radius: var(--radius-pill);
+  font-variant-numeric: tabular-nums;
+}
+
+.topName {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--ink-strong);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topName:hover {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+.strip {
+  display: grid;
+  gap: 2px;
+}
+
+.topDay {
+  text-align: center;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.topCell {
+  height: 36px;
+  border-radius: 4px;
+}
+
+/* 거래 없는 날 */
+.closedCell {
+  background: #f5f6f0;
+}
+
+/* 아래 나머지 품목 표 */
+.scroll {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.itemHead {
+  width: 7.5rem;
+  padding: 0 0 6px;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: left;
+  vertical-align: bottom;
+  color: var(--muted);
+}
+
+.dayHead {
+  padding: 0 0 6px;
+  font-weight: 400;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.dayNumber,
+.weekday {
+  display: block;
+  line-height: 1.3;
+}
+
+.dayNumber {
+  font-size: 12px;
+}
+
+.weekday {
+  font-size: 10px;
+  color: var(--faint);
+}
+
+.sunday .dayNumber,
+.sunday .weekday {
+  color: #c0503a;
+}
+
+.itemName {
+  padding: 2px 8px 2px 0;
+  text-align: left;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemName a {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.itemName a:hover {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+.cell,
+.closed {
+  padding: 2px 1px;
+}
+
+/* 거래 없는 날(일요일·공휴일·아직 안 온 날) 열은 바탕을 옅게 */
+.closed {
+  background: #f5f6f0;
+}
+
+.swatch {
+  display: block;
+  height: 22px;
+  border-radius: 3px;
+}
+
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+/* 진하기 5단계. 한 색(파랑)만 쓴다 */
+.level0 {
+  background: transparent;
+}
+
+.level1 {
+  background: #e1ecfa;
+}
+
+.level2 {
+  background: #b8d2f2;
+}
+
+.level3 {
+  background: #86b1e8;
+}
+
+.level4 {
+  background: #5390dd;
+}
+
+.level5 {
+  background: var(--domestic);
+}
+
+@media (max-width: 720px) {
+  /* 탭 12개를 6×2 로. 가로 스크롤 없이 전부 보인다 */
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .tab,
+  .tabCurrent {
+    min-width: 0;
+    height: 38px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+
+  .legend {
+    gap: 6px 16px;
+    font-size: 13px;
+  }
+
+  .legend i {
+    width: 14px;
+    height: 12px;
+  }
+
+  .legendNote {
+    font-size: 12px;
+  }
+
+  /* 위쪽 1~10위: 순위·이름 한 줄, 날짜 띠는 아래 한 줄로 폭을 다 쓴다 */
+  .topHead,
+  .topRow {
+    grid-template-columns: 1.75rem minmax(0, 1fr);
+    gap: 4px 8px;
+  }
+
+  .topHead .strip,
+  .topRow .strip {
+    grid-column: 1 / -1;
+  }
+
+  .rank {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  .topName {
+    font-size: 18px;
+  }
+
+  .strip {
+    gap: 1px;
+  }
+
+  .topDay .dayNumber {
+    display: none;
+    font-size: 10px;
+  }
+
+  .topDay.major .dayNumber {
+    display: block;
+  }
+
+  .topCell {
+    height: 26px;
+    border-radius: 2px;
+  }
+
+  .sectionTitle {
+    font-size: 19px;
+  }
+
+  .itemHead {
+    width: 4.6rem;
+    font-size: 11px;
+  }
+
+  /* 좁은 화면은 칸이 8px 남짓이라 1·5·10·15·20·25일 숫자만, 요일은 뺀다 */
+  .dayHead .dayNumber {
+    display: none;
+    font-size: 9px;
+  }
+
+  .major .dayNumber {
+    display: block;
+  }
+
+  .weekday {
+    display: none;
+  }
+
+  .itemName {
+    padding-right: 4px;
+  }
+
+  .itemName a {
+    font-size: 14px;
+  }
+
+  .cell,
+  .closed {
+    padding: 1px 0;
+  }
+
+  .swatch {
+    height: 18px;
+    border-radius: 0;
+  }
+}

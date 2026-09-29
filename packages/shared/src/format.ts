@@ -13,6 +13,11 @@ export function tons(kg: number): string {
   return rounded === 0 && kg > 0 ? "1t 미만" : `${rounded.toLocaleString("ko-KR")}t`;
 }
 
+/** 무게. 1500 → "1.5kg", 800 → "800g" */
+export function grams(gram: number): string {
+  return gram >= 1000 ? `${Number((gram / 1000).toFixed(2))}kg` : `${gram}g`;
+}
+
 /** 백분율, 소수 1자리. 0.502 → "50.2%" */
 export function percent(ratio: number): string {
   return `${(ratio * 100).toFixed(1)}%`;

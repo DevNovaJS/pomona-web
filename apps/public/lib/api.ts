@@ -3,6 +3,7 @@ import path from "node:path";
 import type {
   BuildPeriod,
   Item,
+  ItemDailyVolume,
   ItemMonthlyVolume,
   ItemTopOrigins,
   LatestPrice,
@@ -40,6 +41,7 @@ export const api = {
   retailPrices: () => read<RetailPrice[]>("retail-prices"),
   volumes: () => read<MonthlyVolume[]>("volumes"),
   itemVolumes: () => read<ItemMonthlyVolume[]>("item-volumes"),
+  itemDailyVolumes: () => read<ItemDailyVolume[]>("item-daily-volumes"),
   recentVolumes: () => read<RecentVolume[]>("recent-volumes"),
   tradingDays: () => read<TradingDays>("trading-days"),
   origins: () => read<TopOrigins[]>("origins"),
