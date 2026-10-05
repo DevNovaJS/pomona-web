@@ -207,3 +207,21 @@ export interface ReviewRequest {
   rating: number;
   body: string;
 }
+
+/** GET /api/admin/mappings/retail-varieties — 소매 품종 전부. 가격 API 코드(품목 411 · 품종 07) */
+export interface RetailVariety {
+  id: number;
+  itemCd: string;
+  itemNm: string;
+  vrtyCd: string;
+  vrtyNm: string;
+}
+
+/** GET /api/admin/mappings — 정산 품종 ↔ 소매 품종 짝. 최근에 바꾼 순. PUT /api/admin/mappings/{varietyId} 도 한 건을 돌려준다 */
+export interface VarietyMapping {
+  varietyId: number;
+  itemName: string;
+  varietyName: string | null;
+  retailVariety: RetailVariety;
+  updatedAt: string;
+}

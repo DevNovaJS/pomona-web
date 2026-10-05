@@ -11,6 +11,7 @@ import {
 } from "@pomona/shared";
 import { type ReactNode, useEffect, useState } from "react";
 import { adminApi } from "@/lib/api";
+import ui from "../ui.module.css";
 import styles from "./reviews.module.css";
 import { VarietyPicker } from "./VarietyPicker";
 
@@ -192,7 +193,7 @@ export function ReviewForm({
       <div className={styles.grid2}>
         <Field label="과일명" required>
           <input
-            className={styles.input}
+            className={ui.input}
             value={draft.fruitName}
             onChange={(event) => set("fruitName", event.target.value)}
             maxLength={100}
@@ -207,7 +208,7 @@ export function ReviewForm({
         <Field label="먹은 날" required>
           <input
             type="date"
-            className={styles.input}
+            className={ui.input}
             value={draft.eatenDate}
             max={today()}
             onChange={(event) => set("eatenDate", event.target.value)}
@@ -215,7 +216,7 @@ export function ReviewForm({
         </Field>
         <Field label="산 곳" required>
           <input
-            className={styles.input}
+            className={ui.input}
             value={draft.store}
             onChange={(event) => set("store", event.target.value)}
             maxLength={100}
@@ -223,7 +224,7 @@ export function ReviewForm({
         </Field>
         <Field label="산지">
           <input
-            className={styles.input}
+            className={ui.input}
             value={draft.origin}
             onChange={(event) => set("origin", event.target.value)}
             maxLength={100}
@@ -234,7 +235,7 @@ export function ReviewForm({
       <div className={styles.grid3}>
         <Field label="산 가격 (원)" required>
           <input
-            className={styles.input}
+            className={ui.input}
             inputMode="numeric"
             value={draft.price ? won(Number(draft.price)) : ""}
             onChange={(event) => set("price", digits(event.target.value))}
@@ -242,7 +243,7 @@ export function ReviewForm({
         </Field>
         <Field label="무게 (g)" hint="모르면 비움">
           <input
-            className={styles.input}
+            className={ui.input}
             inputMode="numeric"
             value={draft.weightGram}
             onChange={(event) => set("weightGram", digits(event.target.value))}
@@ -277,7 +278,7 @@ export function ReviewForm({
           </div>
           <Field label="제목" required hint="100자까지">
             <input
-              className={styles.input}
+              className={ui.input}
               value={draft.title}
               onChange={(event) => set("title", event.target.value)}
               maxLength={100}
@@ -297,22 +298,17 @@ export function ReviewForm({
 
       <div className={styles.actions}>
         {review && (
-          <button type="button" className={styles.danger} onClick={remove} disabled={saving}>
+          <button type="button" className={ui.danger} onClick={remove} disabled={saving}>
             삭제
           </button>
         )}
         <span className={error ? styles.error : styles.actionNote}>
           {error ?? "저장 후 빌드를 돌려야 공개면에 반영"}
         </span>
-        <button
-          type="button"
-          className={styles.secondary}
-          onClick={() => setDraft(initial)}
-          disabled={!dirty || saving}
-        >
+        <button type="button" className={ui.secondary} onClick={() => setDraft(initial)} disabled={!dirty || saving}>
           되돌리기
         </button>
-        <button type="submit" className={styles.primary} disabled={saving || (review !== null && !dirty)}>
+        <button type="submit" className={ui.primary} disabled={saving || (review !== null && !dirty)}>
           {saving ? "저장 중" : "저장"}
         </button>
       </div>

@@ -2,22 +2,12 @@
 
 import type { AdminVariety } from "@pomona/shared";
 import { useState } from "react";
+import { normalize, varietyCode, varietyName } from "@/lib/variety";
+import ui from "../ui.module.css";
 import styles from "./reviews.module.css";
 
 /** 한 번에 보여줄 검색 결과 수 */
 const LIMIT = 12;
-
-function normalize(text: string): string {
-  return text.replace(/\s+/g, "").toLowerCase();
-}
-
-function nameOf(variety: AdminVariety): string {
-  return `${variety.mclsfNm} · ${variety.sclsfNm ?? "이름 없음"}`;
-}
-
-function codeOf(variety: AdminVariety): string {
-  return `${variety.lclsfCd}-${variety.mclsfCd}-${variety.sclsfCd}`;
-}
 
 /**
  * 가락시장 품종 연결. 페이지 없는 소량 품종까지 품종 마스터 전부에서 품목·품종 이름으로 찾는다("포도샤인", "샤인").
@@ -39,8 +29,8 @@ export function VarietyPicker({
     return (
       <span className={styles.picked}>
         <span className={styles.pickedName}>
-          {selected ? nameOf(selected) : `품종 ${value}`}
-          {selected && <span className={styles.code}>{codeOf(selected)}</span>}
+          {selected ? varietyName(selected) : `품종 ${value}`}
+          {selected && <span className={ui.code}>{varietyCode(selected)}</span>}
         </span>
         <button type="button" className={styles.unpick} onClick={() => onChange(null)}>
           ✕ 연결 해제
@@ -56,7 +46,7 @@ export function VarietyPicker({
   return (
     <div className={styles.picker}>
       <input
-        className={styles.input}
+        className={ui.input}
         value={query}
         onChange={(event) => setQuery(event.target.value)}
         placeholder="품목·품종 이름으로 찾기 (연결 없이 저장해도 됨)"
@@ -74,8 +64,8 @@ export function VarietyPicker({
                 setQuery("");
               }}
             >
-              {nameOf(variety)}
-              <span className={styles.code}>{codeOf(variety)}</span>
+              {varietyName(variety)}
+              <span className={ui.code}>{varietyCode(variety)}</span>
             </button>
           ))}
           <span className={styles.matchNote}>

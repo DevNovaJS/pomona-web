@@ -1,42 +1,3 @@
-.loading,
-.loadError {
-  margin: 0;
-  font-size: 15px;
-  color: var(--muted);
-}
-
-.loadError {
-  color: #b23a2e;
-}
-
-.titleRow {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-}
-
-.title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 34px;
-  font-weight: 400;
-  color: var(--ink-strong);
-}
-
-.subtitle {
-  font-size: 15px;
-  color: var(--muted);
-}
-
-.notice {
-  margin-left: auto;
-  padding: 6px 14px;
-  font-size: 14px;
-  color: var(--link);
-  background: var(--hero);
-  border-radius: var(--radius-pill);
-}
-
 /* 목록 | 폼 */
 .columns {
   display: grid;
@@ -45,25 +6,19 @@
   align-items: start;
 }
 
-.list,
-.form {
-  background: var(--surface);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-}
-
 .list {
+  composes: card from "../ui.module.css";
   padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.list .primary {
+.newButton {
   margin-bottom: 8px;
 }
 
-.list .input {
+.listSearch {
   margin-bottom: 6px;
 }
 
@@ -127,6 +82,7 @@
 
 /* 폼 */
 .form {
+  composes: card from "../ui.module.css";
   padding: 28px 30px;
   display: flex;
   flex-direction: column;
@@ -193,36 +149,6 @@
   color: var(--faint);
 }
 
-.input,
-.textarea {
-  box-sizing: border-box;
-  width: 100%;
-  font-size: 15px;
-  font-family: inherit;
-  color: var(--ink);
-  background: var(--surface-muted);
-  border: 1px solid #e3e8da;
-  border-radius: 12px;
-}
-
-.input {
-  height: 44px;
-  padding: 0 14px;
-}
-
-.textarea {
-  height: 190px;
-  padding: 12px 14px;
-  line-height: 1.7;
-  resize: vertical;
-}
-
-.input:focus,
-.textarea:focus {
-  outline: 2px solid var(--brand);
-  outline-offset: -1px;
-}
-
 .perKg {
   height: 44px;
   display: flex;
@@ -240,6 +166,27 @@
   font-size: 20px;
   font-weight: 400;
   color: var(--ink-strong);
+}
+
+/* 본문 칸. 모양은 ui.input 과 맞춘다 — composes 로 합치면 두 파일의 height 중 어느 쪽이 이길지 불러오는 순서에 달려 있어 따로 쓴다 */
+.textarea {
+  box-sizing: border-box;
+  width: 100%;
+  height: 190px;
+  padding: 12px 14px;
+  font-size: 15px;
+  font-family: inherit;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--surface-muted);
+  border: 1px solid #e3e8da;
+  border-radius: 12px;
+  resize: vertical;
+}
+
+.textarea:focus {
+  outline: 2px solid var(--brand);
+  outline-offset: -1px;
 }
 
 /* 별점·제목·본문 | 그날 도매 시세 */
@@ -363,40 +310,6 @@
   color: #b23a2e;
 }
 
-.primary,
-.secondary,
-.danger {
-  height: 42px;
-  padding: 0 20px;
-  font-size: 15px;
-  font-family: inherit;
-  border: none;
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-}
-
-.primary {
-  color: #ffffff;
-  background: var(--brand);
-}
-
-.secondary {
-  color: var(--ink-2);
-  background: #eef1e8;
-}
-
-.danger {
-  color: #b23a2e;
-  background: #fbe6e2;
-}
-
-.primary:disabled,
-.secondary:disabled,
-.danger:disabled {
-  opacity: 0.45;
-  cursor: default;
-}
-
 /* 품종 연결 */
 .picked {
   height: 44px;
@@ -417,12 +330,6 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-.code {
-  margin-left: 6px;
-  font-size: 12px;
-  color: var(--muted);
 }
 
 .unpick {

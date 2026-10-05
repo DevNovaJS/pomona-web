@@ -1,0 +1,106 @@
+/* 백오피스 화면들이 같이 쓰는 제목 줄·카드·입력 칸·버튼 */
+
+.loading,
+.loadError {
+  margin: 0;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.loadError {
+  color: #b23a2e;
+}
+
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--ink-strong);
+}
+
+.subtitle {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+/* 저장·연결 결과 한 줄 */
+.notice {
+  margin-left: auto;
+  padding: 6px 14px;
+  font-size: 14px;
+  color: var(--link);
+  background: var(--hero);
+  border-radius: var(--radius-pill);
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--ink);
+  background: var(--surface-muted);
+  border: 1px solid #e3e8da;
+  border-radius: 12px;
+}
+
+.input:focus {
+  outline: 2px solid var(--brand);
+  outline-offset: -1px;
+}
+
+.primary,
+.secondary,
+.danger {
+  height: 42px;
+  padding: 0 20px;
+  font-size: 15px;
+  font-family: inherit;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.primary {
+  color: #ffffff;
+  background: var(--brand);
+}
+
+.secondary {
+  color: var(--ink-2);
+  background: #eef1e8;
+}
+
+.danger {
+  color: #b23a2e;
+  background: #fbe6e2;
+}
+
+.primary:disabled,
+.secondary:disabled,
+.danger:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* 품종 코드 "06-03-36" */
+.code {
+  margin-left: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}

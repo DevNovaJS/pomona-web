@@ -3,13 +3,10 @@
 import { type AdminVariety, type Review, shortDate } from "@pomona/shared";
 import { useEffect, useState } from "react";
 import { adminApi } from "@/lib/api";
+import { normalize } from "@/lib/variety";
+import ui from "../ui.module.css";
 import { ReviewForm } from "./ReviewForm";
 import styles from "./reviews.module.css";
-
-/** 띄어쓰기·대소문자를 무시하고 찾는다 */
-function normalize(text: string): string {
-  return text.replace(/\s+/g, "").toLowerCase();
-}
 
 /** 왼쪽 목록에서 고른 것. 새 리뷰를 쓰는 중이면 "new" */
 type Selection = number | "new";
@@ -70,10 +67,10 @@ export default function ReviewsPage() {
   };
 
   if (loadError) {
-    return <p className={styles.loadError}>불러오지 못했습니다: {loadError}</p>;
+    return <p className={ui.loadError}>불러오지 못했습니다: {loadError}</p>;
   }
   if (!reviews) {
-    return <p className={styles.loading}>불러오는 중</p>;
+    return <p className={ui.loading}>불러오는 중</p>;
   }
 
   const shown = query.trim()
@@ -87,20 +84,20 @@ export default function ReviewsPage() {
 
   return (
     <>
-      <div className={styles.titleRow}>
-        <h1 className={styles.title}>리뷰</h1>
-        <span className={styles.subtitle}>저장하면 다음 빌드 때 공개면에 반영 (임시저장 없음)</span>
-        {notice && <span className={styles.notice}>{notice}</span>}
+      <div className={ui.titleRow}>
+        <h1 className={ui.title}>리뷰</h1>
+        <span className={ui.subtitle}>저장하면 다음 빌드 때 공개면에 반영 (임시저장 없음)</span>
+        {notice && <span className={ui.notice}>{notice}</span>}
       </div>
 
       <section className={styles.columns}>
         <aside className={styles.list}>
-          <button type="button" className={styles.primary} onClick={() => select("new")}>
+          <button type="button" className={`${ui.primary} ${styles.newButton}`} onClick={() => select("new")}>
             + 새 리뷰
           </button>
           <input
             type="search"
-            className={styles.input}
+            className={`${ui.input} ${styles.listSearch}`}
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="과일명·제목으로 찾기"

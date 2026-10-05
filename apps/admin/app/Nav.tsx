@@ -4,8 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./layout.module.css";
 
-/** 화면을 만들 때마다 여기에 더한다(배치 관리 · 품종 매핑) */
-const LINKS = [{ href: "/reviews", label: "리뷰" }];
+/** 화면을 만들 때마다 여기에 더한다(배치 관리) */
+const LINKS = [
+  { href: "/reviews", label: "리뷰" },
+  { href: "/mappings", label: "품종 매핑" },
+];
 
 export function Nav() {
   const pathname = usePathname();
