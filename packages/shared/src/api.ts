@@ -178,3 +178,32 @@ export interface Review {
   createdAt: string;
   updatedAt: string;
 }
+
+/*
+ * 백오피스 API (/api/admin)
+ */
+
+/** GET /api/admin/varieties — 품종 마스터 전부(페이지 없는 소량 품종 포함). 리뷰의 품종 연결·품종 매핑에서 고른다 */
+export interface AdminVariety {
+  id: number;
+  lclsfCd: string;
+  lclsfNm: string;
+  mclsfCd: string;
+  mclsfNm: string;
+  sclsfCd: string;
+  sclsfNm: string | null;
+}
+
+/** POST /api/admin/reviews · PUT /api/admin/reviews/{id} 본문. 품종 연결·산지·무게는 없으면 null */
+export interface ReviewRequest {
+  fruitName: string;
+  varietyId: number | null;
+  eatenDate: IsoDate;
+  title: string;
+  store: string;
+  origin: string | null;
+  price: number;
+  weightGram: number | null;
+  rating: number;
+  body: string;
+}
