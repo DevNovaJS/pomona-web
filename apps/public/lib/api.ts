@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type {
   BuildPeriod,
+  DailyPrice,
   Item,
   ItemDailyVolume,
   ItemMonthlyVolume,
@@ -38,6 +39,7 @@ export const api = {
   varieties: () => read<PageVariety[]>("varieties"),
   latestPrices: () => read<LatestPrice[]>("latest-prices"),
   weeklyPrices: () => read<WeeklyPrice[]>("weekly-prices"),
+  dailyPrices: () => read<DailyPrice[]>("daily-prices"),
   retailPrices: () => read<RetailPrice[]>("retail-prices"),
   volumes: () => read<MonthlyVolume[]>("volumes"),
   itemVolumes: () => read<ItemMonthlyVolume[]>("item-volumes"),

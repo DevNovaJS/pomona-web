@@ -15,6 +15,7 @@ const ENDPOINTS = {
   varieties: "/varieties",
   "latest-prices": "/prices/latest",
   "weekly-prices": "/prices/weekly",
+  "daily-prices": "/prices/daily",
   "retail-prices": "/retail-prices",
   volumes: "/volumes",
   "item-volumes": "/volumes/items",

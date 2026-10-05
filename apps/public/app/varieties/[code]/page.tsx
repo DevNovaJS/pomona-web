@@ -8,6 +8,7 @@ import { VolumeAndOrigins } from "@/components/VolumeAndOrigins";
 import { api } from "@/lib/api";
 import { toBars } from "@/lib/bars";
 import { itemCode, itemPath, varietyCode, varietyName } from "@/lib/paths";
+import { DailyPrices } from "./DailyPrices";
 import { PriceCards } from "./PriceCards";
 import { VarietyReviews } from "./VarietyReviews";
 
@@ -42,22 +43,25 @@ export async function generateMetadata({ params }: PageProps<"/varieties/[code]"
 
 export default async function VarietyPage({ params }: PageProps<"/varieties/[code]">) {
   const variety = await findVariety((await params).code);
-  const [period, latestPrices, weeklyPrices, retailPrices, volumes, tradingDays, origins, reviews] = await Promise.all([
-    api.period(),
-    api.latestPrices(),
-    api.weeklyPrices(),
-    api.retailPrices(),
-    api.volumes(),
-    api.tradingDays(),
-    api.origins(),
-    api.reviews(),
-  ]);
+  const [period, latestPrices, weeklyPrices, dailyPrices, retailPrices, volumes, tradingDays, origins, reviews] =
+    await Promise.all([
+      api.period(),
+      api.latestPrices(),
+      api.weeklyPrices(),
+      api.dailyPrices(),
+      api.retailPrices(),
+      api.volumes(),
+      api.tradingDays(),
+      api.origins(),
+      api.reviews(),
+    ]);
   const name = varietyName(variety);
   const bars = toBars(
     monthsBetween(period.from, period.to),
     volumes.filter((volume) => volume.varietyId === variety.id),
   );
   const topOrigins = origins.find((origin) => origin.varietyId === variety.id) ?? { total: [], byMonth: {} };
+  const ownDailyPrices = dailyPrices.filter((price) => price.varietyId === variety.id);
 
   return (
     <>
@@ -78,6 +82,11 @@ export default async function VarietyPage({ params }: PageProps<"/varieties/[cod
           weekly={weeklyPrices.find((price) => price.varietyId === variety.id)}
           retail={retailPrices.find((price) => price.varietyId === variety.id)}
         />
+
+        {/* 최근 30일에 거래가 없는 품종은 그릴 점이 없어 뺀다 */}
+        {ownDailyPrices.length > 0 && (
+          <DailyPrices baseDate={period.baseDate} prices={ownDailyPrices} label={`${name} 최근 30일 도매가 kg당`} />
+        )}
 
         <VolumeAndOrigins
           subtitle="가락시장 · 톤"

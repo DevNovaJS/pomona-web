@@ -57,6 +57,16 @@ export interface WeeklyPrice {
   changeRate: number | null;
 }
 
+/** GET /prices/daily — 품종별 기준일 포함 최근 30일, 거래일마다 한 행. 거래 없는 날은 행이 없다 */
+export interface DailyPrice {
+  varietyId: number;
+  date: IsoDate;
+  /** 등급 합산 대표가(총액 합 ÷ 물량 합), kg당 원 */
+  perKg: number;
+  /** 그날 물량 합, kg */
+  qty: number;
+}
+
 export interface RetailGradePrice {
   grdCd: string;
   grdNm: string;

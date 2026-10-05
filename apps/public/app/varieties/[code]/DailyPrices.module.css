@@ -1,0 +1,119 @@
+.head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+
+.when {
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* 고른 점(처음엔 마지막 거래일)의 날짜·가격·물량 */
+.readout {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-size: 15px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.readout b {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--ink-strong);
+}
+
+.readoutDate {
+  color: var(--ink-2);
+}
+
+.box {
+  width: 100%;
+  overflow: hidden;
+}
+
+.box svg {
+  display: block;
+}
+
+.grid {
+  stroke: var(--track);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 6;
+  stroke-linecap: round;
+}
+
+.tick {
+  font-size: 12px;
+  fill: var(--faint);
+  text-anchor: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.day {
+  font-size: 13px;
+  fill: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 오늘 도매가 카드 아이콘과 같은 초록 */
+.line {
+  fill: none;
+  stroke: #2f7a5b;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.dot {
+  fill: #2f7a5b;
+  stroke: var(--surface);
+  stroke-width: 2;
+}
+
+.dotSelected {
+  composes: dot;
+  stroke-width: 3;
+}
+
+.hit {
+  fill: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.hit:focus-visible {
+  stroke: var(--brand);
+  stroke-width: 2;
+}
+
+.narrow .tick {
+  font-size: 10px;
+}
+
+.narrow .day {
+  font-size: 11px;
+}
+
+@media (max-width: 720px) {
+  .when {
+    margin-left: 0;
+    font-size: 13px;
+  }
+
+  .readout {
+    font-size: 14px;
+  }
+
+  .readout b {
+    font-size: 26px;
+  }
+}
