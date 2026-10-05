@@ -225,3 +225,48 @@ export interface VarietyMapping {
   retailVariety: RetailVariety;
   updatedAt: string;
 }
+
+/** 배치 작업 이름. 도매(가락 정산) · 소매(가격 API) */
+export type BatchJob = "wholesale-daily" | "retail-daily";
+
+/** 실행 결과. EMPTY(결측)는 실패가 아니다 — 그날 거래·조사가 없었던 것 */
+export type BatchStatus = "RUNNING" | "SUCCESS" | "EMPTY" | "FAILED";
+
+/** GET /api/admin/batch/status */
+export interface BatchOverview {
+  /** 기간 재수집이 뒤에서 돌고 있는지 */
+  running: boolean;
+  /** 도매·소매 순 */
+  jobs: {
+    jobName: BatchJob;
+    /** 마지막으로 성공한 수집 대상 날짜. 성공이 없으면 null */
+    lastSuccessDate: IsoDate | null;
+    /** 아직 안 풀린 실패 건수 */
+    unresolvedFailures: number;
+  }[];
+}
+
+/** GET /api/admin/batch/runs · /failures, POST /runs/{id}/retry 의 실행 기록 한 건 */
+export interface BatchRun {
+  id: number;
+  jobName: BatchJob;
+  targetDate: IsoDate;
+  status: BatchStatus;
+  /** 호출 조건. 도매 { date, market, categories: ["06", "08"] }, 소매 { item: "411", category: "400", from, to, se } */
+  params: Record<string, unknown>;
+  rowCount: number;
+  message: string | null;
+  startedAt: string;
+  finishedAt: string | null;
+}
+
+/** GET /api/admin/batch/runs — 최근 실행 이력의 하루. 수집 대상일 10일씩, 다음 장은 받은 마지막 날짜를 before 로 */
+export interface BatchDay {
+  targetDate: IsoDate;
+  /** 작업·품목마다 마지막 실행. 도매 먼저(한 건), 소매는 품목 수만큼 */
+  runs: {
+    run: BatchRun;
+    /** 그날 같은 작업·품목을 돈 횟수(매일 D-1~D-5 재수집·재실행 포함) */
+    attempts: number;
+  }[];
+}

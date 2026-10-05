@@ -13,7 +13,9 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
     const error = await response.json().catch(() => null);
     throw new Error(error?.message ?? `${method} ${path} → ${response.status}`);
   }
-  return response.status === 204 ? null : ((await response.json()) as T);
+  // 204 와 본문 없는 202(기간 재수집 시작)는 null
+  const text = await response.text();
+  return text ? (JSON.parse(text) as T) : null;
 }
 
 export const adminApi = {

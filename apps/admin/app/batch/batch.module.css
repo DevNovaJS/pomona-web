@@ -1,0 +1,308 @@
+/* 도매 · 소매 · 공개면 빌드 */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.card {
+  composes: card from "../ui.module.css";
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.cardHead {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.cardLabel {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.cardValue {
+  font-family: var(--font-display);
+  font-size: 30px;
+  color: var(--ink-strong);
+}
+
+.badge {
+  margin-left: auto;
+  padding: 3px 10px;
+  font-size: 13px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.badgeOk {
+  composes: badge;
+  color: var(--link);
+  background: var(--hero);
+}
+
+.badgeFailed {
+  composes: badge;
+  color: #b23a2e;
+  background: #fbe6e2;
+}
+
+.badgeMuted {
+  composes: badge;
+  color: var(--muted);
+  background: #eef1e8;
+}
+
+/* 안 풀린 실패 · 최근 실행 이력 */
+.section {
+  composes: card from "../ui.module.css";
+  padding: 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 8px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.sectionNote {
+  font-size: 13px;
+  color: var(--faint);
+}
+
+.empty {
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.failure {
+  display: grid;
+  grid-template-columns: 190px 180px minmax(0, 1fr) 120px auto;
+  gap: 16px;
+  align-items: center;
+  min-height: 56px;
+  font-size: 15px;
+  border-top: 1px solid #eef1e8;
+}
+
+.date {
+  color: var(--ink-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+.message {
+  color: #b23a2e;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.time {
+  font-size: 13px;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 기간 재수집 한 줄 */
+.collect {
+  composes: card from "../ui.module.css";
+  padding: 20px 26px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+
+.dateField {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.dateField input {
+  width: 170px;
+}
+
+.error {
+  font-size: 13px;
+  color: #b23a2e;
+}
+
+/* 이력 표 */
+.legend {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+}
+
+.dayHead,
+.dayRow {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 16px;
+  align-items: center;
+}
+
+.dayHead {
+  padding-bottom: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.day {
+  border-top: 1px solid #eef1e8;
+}
+
+.dayRow {
+  min-height: 52px;
+  font-size: 15px;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+
+.attempts {
+  font-size: 13px;
+  color: var(--faint);
+}
+
+.none {
+  font-size: 13px;
+  color: var(--faint);
+}
+
+.toggle {
+  padding: 3px 10px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--ink-2);
+  background: #eef1e8;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+/* 소매 품목별로 펼친 칸 */
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 0 14px;
+  padding: 14px 16px;
+  background: var(--surface-muted);
+  border-radius: 14px;
+}
+
+.itemsNote {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.itemChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  padding: 4px 10px;
+  font-size: 13px;
+  border-radius: var(--radius-pill);
+  font-variant-numeric: tabular-nums;
+}
+
+.chipSuccess {
+  composes: chip;
+  color: var(--link);
+  background: var(--hero);
+}
+
+.chipEmpty {
+  composes: chip;
+  color: var(--muted);
+  background: #e9ece3;
+}
+
+.chipFailed {
+  composes: chip;
+  color: #b23a2e;
+  background: #fbe6e2;
+}
+
+.status {
+  justify-self: start;
+  max-width: 100%;
+  padding: 3px 10px;
+  font-size: 13px;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.statusSuccess {
+  composes: status;
+  color: var(--link);
+  background: var(--hero);
+}
+
+.statusEmpty {
+  composes: status;
+  color: var(--muted);
+  background: #eef1e8;
+}
+
+.statusEmptyWeekday {
+  composes: status;
+  color: #9a5a24;
+  background: #fff0e3;
+}
+
+.statusFailed {
+  composes: status;
+  color: #b23a2e;
+  background: #fbe6e2;
+}
+
+.statusRunning {
+  composes: status;
+  color: var(--domestic-chip-ink);
+  background: var(--domestic-chip-bg);
+}
+
+.more {
+  align-self: center;
+  margin-top: 12px;
+}
